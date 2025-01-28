@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine's 2025</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      margin: 0;
+      padding: 0;
+      color: #444;
+      background: #fff6f6;
+    }
+
+    header {
+      background-color: #ff8fa1;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 2.5rem;
+      letter-spacing: 1px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 15px;
+      background: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .front-page {
+      text-align: center;
+      padding: 40px;
+      background: url("https://i.ibb.co/gWrWPfJ/received-471465602409166.jpg") no-repeat center/cover;
+      color: pink;
+      border-radius: 15px;
+    }
+
+    .front-page h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .front-page button {
+      background-color: #ff8fa1;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 1.2rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .front-page button:hover {
+      background-color: #ff6f8b;
+    }
+
+    #popUp {
+      margin-top: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    #popUp img {
+      width: 100px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    #mainContent {
+      display: none;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 2px solid #ff8fa1;
+    }
+
+    .tabs button {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      background: #fff6f6;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #ff8fa1;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .tabs button.active {
+      background: #ff8fa1;
+      color: white;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .tab-content {
+      display: none;
+      padding: 20px;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+
+    .pictures img {
+      width: 100%;
+      max-width: 200px;
+      margin: 10px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .spotify, .letter {
+      background: #ffe5ec;
+      border: 2px solid #ff8fa1;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .spotify a {
+      display: inline-block;
+      color: #ff8fa1;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .letter {
+      font-family: 'Cursive', Georgia, serif;
+      color: #444;
+      background: #fff4f7;
+      border-radius: 15px;
+      padding: 20px;
+      line-height: 1.8;
+    }
+
+    .heart {
+      margin: 20px auto;
+      width: 60px;
+      height: 60px;
+      background-color: #ff8fa1;
+      clip-path: polygon(50% 0%, 85% 30%, 100% 75%, 50% 100%, 0% 75%, 15% 30%);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+    }
+    #imageModal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    #imageModal img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 10px;
+    }
+
+    #imageModal .close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    .letter audio, .letter video {
+      margin-top: 20px;
+      display: block;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+  Valentines 2025
+  </header>
+
+  <!-- Front Page -->
+  <div class="container front-page" id="frontPage">
+    <h2>Will you be my Valentine?</h2>
+    <button onclick="showPopUp()">Yes</button>
+    <button onclick="noResponse()">No</button>
+    <div id="popUp" style="display: none;">
+      <img src="https://i.ibb.co/9tT0GXR/received-2030049744166208.jpg" alt="Flowers and Chocolates">
+      <p>Thank you for saying yesss babyyy mwahhhhhh</p>
+      <button onclick="proceed()">Proceed</button>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container" id="mainContent">
+    <div class="tabs">
+      <button class="active" onclick="switchTab(event, 'pictures')">Memories</button>
+      <button onclick="switchTab(event, 'spotify')">Song</button>
+      <button onclick="switchTab(event, 'letter')">Letter</button>
+    </div>
+
+    <!-- Pictures Tab -->
+    <div id="pictures" class="tab-content active">
+      <div class="pictures">
+        <h2>Core Memories</h2>
+        <img src="https://i.ibb.co/MGpNSg6/Screenshot-2025-01-09-19-45-33-567-com-google-android-apps-photos.jpg" alt="Memory" onclick="openModal(this)">
+        <img src="https://i.ibb.co/BKff2jN/Screenshot-2025-01-09-19-43-40-473-com-google-android-apps-photos.jpg" alt="Memory" onclick="openModal(this)">
+        <img src="https://i.ibb.co/vBmznpf/Messenger-creation-D9-D90-E68-A5-AF-4609-B3-CA-2-EDC5093-B67-A.jpg" alt="Memory" onclick="openModal(this)">
+        <img src="https://i.ibb.co/n81ghyw/Messenger-creation-EDAAD4-A9-3-EE9-4-C86-995-E-5-FC2-B3-F56661.jpg" alt="Memory" onclick="openModal(this)">
+        <img src="https://i.ibb.co/Lrk03ps/IMG-20250109-193212-917.jpg" alt="Memory" onclick="openModal(this)">
+        <img src="https://i.ibb.co/kQRhxJz/IMG-20250109-193216-320.jpg" alt="Memory" onclick="openModal(this)">
+        <img src="https://i.ibb.co/yWb6Bkk/Screenshot-2025-01-09-19-44-54-412-com-google-android-apps-photos.jpg" alt="Memory" onclick="openModal(this)">
+        <img src="https://i.ibb.co/RNVh84Z/Screenshot-2024-11-23-18-47-15-049-com-facebook-orca.jpg" alt="Memory" onclick="openModal(this)">
+        <img src="https://i.ibb.co/rxdPwJF/Screenshot-2024-11-23-18-48-09-212-com-facebook-orca.jpg" alt="Memory" onclick="openModal(this)">
+        <img src="https://i.ibb.co/W2kzftH/received-1756475631861499.jpg" alt="Memory" onclick="openModal(this)">
+        <img src="https://i.ibb.co/djqwy7q/Messenger-creation-E709108-E-D254-4-F46-8-BCE-F616-B735-B93-B.jpg" alt="Memory" onclick="openModal(this)">
+        <img src="https://i.ibb.co/vYggqbW/received-1290400262237470.jpg" alt="Memory" onclick="openModal(this)">
+        <img src="https://i.ibb.co/DYjBKqn/received-1325312145321479.jpg" alt="Memory" onclick="openModal(this)">
+        <img src="https://i.ibb.co/zGbffWN/received-590646430388372.jpg" alt="Memory" onclick="openModal(this)">
+        <img src="https://i.ibb.co/p4d0K4j/received-1329802091509466.jpg" alt="Memory" onclick="openModal(this)">
+        <img src="https://i.ibb.co/D5Gf7JG/received-1641350280137124.jpg" alt="Memory" onclick="openModal(this)">
+        <img src="https://i.ibb.co/Vtw62KT/received-2154742134945971.jpg" alt="Memory" onclick="openModal(this)">
+        <img src="https://i.ibb.co/9GPszLG/Messenger-creation-7-A541-DB4-B507-4-DF4-92-A2-232-C6-CB558-D1.jpg" alt="Memory" onclick="openModal(this)">
+        <img src="https://i.ibb.co/0syxTBN/Messenger-creation-26-F5-AFCE-9-DEF-4768-AFB3-8-F4-CD7-F4-B6-CF.jpg"  alt="Memory" onclick="openModal(this)">
+      </div>
+    </div>
+
+    <!-- Spotify Tab -->
+    <div id="spotify" class="tab-content">
+      <div class="spotify">
+        <h2>:>></h2>
+        <p>The song "Last Night on Earth" by Green Day is a song of devotion and dedication, expressing the singer's commitment to their loved one despite any obstacles they may face. The singer is sending out all their love, to show that their heart belongs to their partner and they will always fight for them no matter what. The idea of losing "everything in the fire" symbolizes the difficult times that can come and how the singer is prepared to stand by their partner through it all. The message of the song is one of pure and unconditional love, no matter the cost.
+          <a href="https://open.spotify.com/track/5TpPSTItCwtZ8Sltr3vdzm" target="_blank">Listen on Spotify</a>
+      </div>
+    </div>
+
+    <!-- Love Letter Tab -->
+<div id="letter" class="tab-content">
+  <div class="letter">
+    <h2>Scroll down, play it, scroll up and read it</h2>
+    <p>HELLOOOOO MY CRUSH 
+HAPPY VALENTINE'S DAY it's so sad cause I can't be there with you to celebrate it but instead I created this website for you nalangg 🥹 took some time learning it tho (it was so hirappppp I puyat puyat and almost gave up that's why I always woke up late to go to school) that's why it's so pangit and so basic pa but anyways first and foremost I'm sorry po I wasn't be able to be there to give you a reall flower and chocolates here nalang 💐🍫 can't find an orchid flower po ehh but I badly want to hugggg youuuu right nowwwww and spend time with you 🥹 and I'm sorry for the things I do that hurts you po. I'm sorry cause sometimes my love needs me tapos I'm tulog or whatsoever I'm sorry cause idk how to lambing my baby I'm sorry for not giving you the small things you want po I'm sorry cause sometimes I sabi something that makes my baby tampo and galittt I'm sorry cause I'm not giving you enough assurance po I'm sorry cause I'm pasaway I'm sorry dahil sometimes I don't listen to you po I'm sorry I can't be there for you when you need someone like physically there I'm sorry baby I'm sorry po cause I'm boring and I can't make you happy and I'm sorry din cause I'm weak and sensitive asf like I cry easily but I love youuuuu po so much and I'm really thankful I have you in my life yes ik we fight a lot we sometimes misunderstood each other but we chose to fix it right away thank you for being there for me thank you for your support love thank you for staying and not giving up on me ik I'm pasaway I always tease my baby but you chose to stay thank you po, thank you for being my partner in crime thank you because I found peacefulness, happiness and safety in you thank you cause you payag me to court you I will be forever grateful for that thank you my love for being my girl I mean you are my girl not yet pa but you will be my girl I just want you to know you're my pahinga like really it works love whenever I'm drained na drained ns sa school po I'll just talk to you and na naaaaaa it works like magic loveeee you're the reason why there's a smile on my face everyday YEAHHHHH E V E R Y D A Y cause I always think of you mannn sa school till sa bahay na you're not a distraction to my studies babyyy you're my inspiration pa nga ehhhh a lil fun fact whenever I have a free time or there's no teacher I will always look at your pictures anyways I will treasure our moments love, the chaotic calls loll, the late night calls, our moment in codm(CDO), our moments in Roblox, our moments in messenger the game thingy and the share screen sa tiktok, basta all of our moments it's priceless I could never replace that with someone whose not as perfect as youuuuuu bawal angal kapag you angal you'll kiss me 100 times and ofc my promises I promise I will be an UNDERstanding manliligaw I promise to take care of you kahit na you're not listening to me and kahit na you do reckless things 🥹  I promise I will keep you safe and I promise I won't replace you like why would I??? my baby is perfect na perfect for me anyways back to the topic I promise to fix our misunderstandings I promise to be a good partner to you and if I ever break one of the promises I made I will never forgive myself for that it'll hunt me forever I love youuuuu sumayyyy sumattttssss I really mean it let's make it till the end love?? I love you so much no words can express how much I love you and the only way to express it is to show and let you feel it my love, your daydok is always here for you. I love you so much riaa koo HAPPY VALENTINE'S MY BABY (GIRL) I LOVE YOUUUUUUU SO MUCHHHH</p>
+    <audio controls>
+  <source src="https://www.dropbox.com/scl/fi/1z3qywnfdqpecwobtik7r/Jan-19-12.33-AM-2.m4a?rlkey=z0layxx606kxy4e974xp0gjrf&raw=1" type="audio/mp4">
+  Your browser does not support the audio element.
+</audio>
+  </div>
+</div>
+
+  <!-- Modal for Gallery -->
+  <div id="imageModal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img id="modalImage">
+  </div>
+
+  <script>
+    function showPopUp() {
+      document.getElementById('popUp').style.display = 'block';
+    }
+
+    function noResponse() {
+      alert("Awwww please po???? :(");
+    }
+
+    function proceed() {
+      document.getElementById('frontPage').style.display = 'none';
+      document.getElementById('mainContent').style.display = 'block';
+    }
+
+    function switchTab(event, tabId) {
+      const tabs = document.querySelectorAll('.tabs button');
+      const contents = document.querySelectorAll('.tab-content');
+      tabs.forEach(tab => tab.classList.remove('active'));
+      contents.forEach(content => content.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+
+    function openModal(img) {
+      const modal = document.getElementById('imageModal');
+      const modalImage = document.getElementById('modalImage');
+      modalImage.src = img.src;
+      modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('imageModal');
+      modal.style.display = 'none';
+    }
+  </script>
+</body>
+</html>
